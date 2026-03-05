@@ -1,0 +1,157 @@
+<!-- <?php 
+// // Affichage des erreurs pour tester
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
+// require 'PHPMailer/PHPMailer.php';
+// require 'PHPMailer/SMTP.php';
+// require 'PHPMailer/Exception.php';
+
+// $status_message = "";
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+//     // On récupère uniquement les 3 champs de ton image
+//     $nom     = strip_tags(trim($_POST['nom']));
+//     $email   = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+//     $message = strip_tags(trim($_POST['message']));
+
+//     $mail = new PHPMailer(true);
+
+//     try {
+//         // Configuration Serveur
+//         $mail->isSMTP();
+//         $mail->Host       = 'smtp.gmail.com'; 
+//         $mail->SMTPAuth   = true;
+//         $mail->Username   = 'emechri.ledantec@gmail.com'; 
+//         $mail->Password   = 'srjidasjgdchmchs '; 
+//         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+//         $mail->Port       = 465;
+//         $mail->CharSet    = 'UTF-8';
+
+//         // Destinataires
+//         $mail->setFrom('emechri.ledantec@gmail.com', 'Portfolio BTS SIO');
+//         $mail->addAddress('emechri.ledantec@gmail.com', 'Elyes Mechri'); 
+        
+//         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//             $mail->addReplyTo($email, $nom);
+//         }
+
+//         // Contenu
+//         $mail->isHTML(false); 
+//         $mail->Subject = "Nouveau message de : $nom";
+        
+//         $corpsMessage = "Vous avez reçu un nouveau message depuis votre site :\n\n";
+//         $corpsMessage .= "Nom : $nom\n";
+//         $corpsMessage .= "Email : $email\n\n";
+//         $corpsMessage .= "Message :\n$message";
+        
+//         $mail->Body = $corpsMessage;
+
+//         $mail->send();
+
+//         header("Location: " . $_SERVER['PHP_SELF'] . "?success=1#formulaire");
+//         exit();
+
+//     } catch (Exception $e) {
+//         $status_message = "<div style='color:red;'>❌ Erreur : {$mail->ErrorInfo}</div>";
+//     } 
+// }
+
+// if (isset($_GET['success']) && $_GET['success'] == 1) {
+//     $status_message = "<div style='color:green;'>✅ Message envoyé avec succès !</div>";
+// }
+?>
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio BTS SIO</title>
+    <link rel="stylesheet" href="ASSET/Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Mon Portfolio BTS SIO</div>
+        <ul class="nav-links">
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Competence.html">Compétences & Veille</a></li>
+            <li><a href="Realisation.html">Projets & Stages</a></li>
+            <li><a href="Contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Me Contacter</h1>
+        <p>Une question sur mon parcours ou une opportunité de stage ? N'hésitez pas à m'écrire.</p>
+    </header>
+
+    <main class="container contact-container">
+        
+        <div class="contact-info">
+            <h2>Mes Coordonnées</h2>
+            <p>Je suis actuellement à la recherche d'une alternance pour la rentrée prochaine.</p>
+            
+            <div class="info-item">
+                <h3>📧 Email</h3>
+                <p><a href="emechri.ledantec@gmail.com">emechri.ledantec@gmail.com</a></p>
+            </div>
+
+            <div class="info-item">
+                <h3>📱 Téléphone</h3>
+                <p><a href="tel:+33615448057">06 15 44 80 57</a></p>
+            </div>
+
+            <div class="info-item">
+                <h3>🔗 Réseaux Professionnels</h3>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/elyes-mechri-610056295/" target="_blank" class="btn-social">LinkedIn</a>
+                    <a href="https://github.com/elyosssss" target="_blank" class="btn-social">GitHub</a>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <h3>📍 Localisation</h3>
+                <p>Lannion, France (Mobile dans toute la région)</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+    <h2>M'envoyer un message</h2>
+    
+    <!-- <?php if (!empty($status_message)) echo $status_message; ?> -->
+
+    <form action="contact.php" method="POST">
+        <div class="form-group">
+            <label for="name">Votre Nom</label>
+            <input type="text" id="name" name="nom" placeholder="Jean Dupont" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Votre Email</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Bonjour, je vous contacte car..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Envoyer</button>
+    </form>
+</div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - ELYES MECHRI - Portfolio BTS SIO</p>
+    </footer>
+
+</body>
+</html>
